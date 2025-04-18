@@ -8,7 +8,6 @@ pipelines:
           - gradle  # Cache Gradle dependencies to speed up future builds
         script:
           - echo "Starting build"
-          # Directly build the APK without changing permissions (since it's already done)
-          - ./gradlew clean build
+          - bash ./gradlew clean build  # Using bash to run gradlew directly
         artifacts:
           - app/build/outputs/**/*.apk  # Save the APK as an artifact
