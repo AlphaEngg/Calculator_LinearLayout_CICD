@@ -1,13 +1,13 @@
 image: bitriseio/docker-android:latest
-
 pipelines:
   default:
     - step:
         name: Build APK
         caches:
-          - gradle  # Cache Gradle dependencies to speed up future builds
+          - gradle
         script:
           - echo "Starting build"
-          - ./gradlew clean build  # Clean and build the APK
+          - chmod +x ./gradlew
+          - ./gradlew clean build
         artifacts:
-          - app/build/outputs/**/*.apk  # Save the APK as an artifact
+          - app/build/outputs/**/*.apk
