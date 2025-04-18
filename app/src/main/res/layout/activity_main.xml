@@ -15,11 +15,11 @@
         android:padding="10dp"
         android:id="@+id/txtTitle"
         android:textSize="20sp"/>
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Caluation"
+        android:hint="Caluation"
         android:textAlignment="textEnd"
         android:id="@+id/txtCal"
         android:textSize="20sp"/>

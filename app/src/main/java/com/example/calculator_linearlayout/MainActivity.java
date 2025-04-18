@@ -2,22 +2,26 @@ package com.example.calculator_linearlayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declare all UI components
-    private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    private Button btnAdd, btnSub, btnDiv, btnMul, btnCal, btnClear;
-    private EditText txtCal;
+    TextView txtCal;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAdd, btnSub, btnMul, btnDiv, btnClear, btnCal;
+    double value1, value2;
+    boolean isAdd, isSub, isMul, isDiv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize all buttons
+        txtCal = findViewById(R.id.txtCal);
+
+        // Initialize buttons
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -28,16 +32,87 @@ public class MainActivity extends AppCompatActivity {
         btn7 = findViewById(R.id.btn7);
         btn8 = findViewById(R.id.btn8);
         btn9 = findViewById(R.id.btn9);
-
         btnAdd = findViewById(R.id.btnAdd);
         btnSub = findViewById(R.id.btnSub);
-        btnDiv = findViewById(R.id.btnDiv);
         btnMul = findViewById(R.id.btnMul);
-        btnCal = findViewById(R.id.btnCal);
+        btnDiv = findViewById(R.id.btnDiv);
         btnClear = findViewById(R.id.btnClear);
+        btnCal = findViewById(R.id.btnCal);
 
-        txtCal = findViewById(R.id.txtCal);
+        // Set onClickListeners for buttons
+        btn1.setOnClickListener(v -> txtCal.append("1"));
+        btn2.setOnClickListener(v -> txtCal.append("2"));
+        btn3.setOnClickListener(v -> txtCal.append("3"));
+        btn4.setOnClickListener(v -> txtCal.append("4"));
+        btn5.setOnClickListener(v -> txtCal.append("5"));
+        btn6.setOnClickListener(v -> txtCal.append("6"));
+        btn7.setOnClickListener(v -> txtCal.append("7"));
+        btn8.setOnClickListener(v -> txtCal.append("8"));
+        btn9.setOnClickListener(v -> txtCal.append("9"));
+        btn0.setOnClickListener(v -> txtCal.append("0"));
 
-        // TODO: Add button click listeners here later
+        btnClear.setOnClickListener(v -> txtCal.setText(""));
+
+        // Operators
+        btnAdd.setOnClickListener(v -> {
+            String input = txtCal.getText().toString();
+            if (!input.isEmpty()) {
+                value1 = Double.parseDouble(input);
+                isAdd = true;
+                txtCal.setText("");
+            }
+        });
+
+        btnSub.setOnClickListener(v -> {
+            String input = txtCal.getText().toString();
+            if (!input.isEmpty()) {
+                value1 = Double.parseDouble(input);
+                isSub = true;
+                txtCal.setText("");
+            }
+        });
+
+        btnMul.setOnClickListener(v -> {
+            String input = txtCal.getText().toString();
+            if (!input.isEmpty()) {
+                value1 = Double.parseDouble(input);
+                isMul = true;
+                txtCal.setText("");
+            }
+        });
+
+        btnDiv.setOnClickListener(v -> {
+            String input = txtCal.getText().toString();
+            if (!input.isEmpty()) {
+                value1 = Double.parseDouble(input);
+                isDiv = true;
+                txtCal.setText("");
+            }
+        });
+
+        // Calculate result
+        btnCal.setOnClickListener(v -> {
+            String input = txtCal.getText().toString();
+            if (!input.isEmpty()) {
+                value2 = Double.parseDouble(input);
+                if (isAdd) {
+                    txtCal.setText(String.valueOf(value1 + value2));
+                    isAdd = false;
+                } else if (isSub) {
+                    txtCal.setText(String.valueOf(value1 - value2));
+                    isSub = false;
+                } else if (isMul) {
+                    txtCal.setText(String.valueOf(value1 * value2));
+                    isMul = false;
+                } else if (isDiv) {
+                    if (value2 != 0) {
+                        txtCal.setText(String.valueOf(value1 / value2));
+                    } else {
+                        txtCal.setText("Error");
+                    }
+                    isDiv = false;
+                }
+            }
+        });
     }
 }
