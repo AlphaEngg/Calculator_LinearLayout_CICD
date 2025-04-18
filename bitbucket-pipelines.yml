@@ -1,4 +1,4 @@
-image: android:latest  # Official Android Docker image
+image: bitriseio/docker-android:latest
 
 pipelines:
   default:
