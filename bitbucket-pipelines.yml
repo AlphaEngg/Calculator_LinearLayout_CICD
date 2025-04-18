@@ -5,10 +5,10 @@ pipelines:
     - step:
         name: Build APK
         caches:
-          - gradle
+          - gradle  # Cache Gradle dependencies to speed up future builds
         script:
           - echo "Starting build"
-          - chmod +x ./gradlew
+          # Directly build the APK without changing permissions (since it's already done)
           - ./gradlew clean build
         artifacts:
-          - app/build/outputs/**/*.apk
+          - app/build/outputs/**/*.apk  # Save the APK as an artifact
