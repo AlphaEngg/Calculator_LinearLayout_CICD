@@ -1,4 +1,5 @@
-image: bitriseio/docker-android:latest
+image: bitriseio/android-ndk:latest
+
 pipelines:
   default:
     - step:
