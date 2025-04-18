@@ -1,4 +1,4 @@
-image: bitriseio/android-ndk:latest
+image: cimg/android:2023.11.1
 
 pipelines:
   default:
