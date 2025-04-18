@@ -1,14 +1,13 @@
-image: jlordiales/android-sdk:34-jdk17
+image: circleci/android:api-34-jdk17  # Public Android image on Docker Hub
 
 pipelines:
   default:
     - step:
         name: Build APK
         caches:
-          - gradle
+          - gradle  # Cache Gradle dependencies to speed up future builds
         script:
-          - echo "✅ Building Android App with public Android SDK image..."
-          - chmod +x ./gradlew
-          - ./gradlew clean assembleDebug
+          - echo "Starting build"
+          - ./gradlew clean build  # Clean and build the APK
         artifacts:
-          - app/build/outputs/**/*.apk
+          - app/build/outputs/**/*.apk  # Save the APK as an artifact
