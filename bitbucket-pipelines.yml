@@ -1,13 +1,14 @@
-image: android:latest  # Use the official Android Docker image for the build process
+image: gradle:7.4.2-jdk11  # ✅ Stable Gradle + Java image (no Docker setup required)
 
 pipelines:
   default:
     - step:
         name: Build APK
         caches:
-          - gradle  # Cache Gradle dependencies to speed up future builds
+          - gradle
         script:
-          - echo "Starting build"  # Simple log to show build has started
-          - ./gradlew clean build  # Clean the project and build the APK
+          - echo "✅ Building Android App..."
+          - chmod +x ./gradlew
+          - ./gradlew clean assembleDebug
         artifacts:
-          - app/build/outputs/**/*.apk  # Save the APK as an artifact
+          - app/build/outputs/**/*.apk
