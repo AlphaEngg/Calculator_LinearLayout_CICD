@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnClear = findViewById(R.id.btnClear);
         btnCal = findViewById(R.id.btnCal);
 
-        // Set onClickListeners for buttons
+        // Set onClickListeners for number buttons
         btn1.setOnClickListener(v -> txtCal.append("1"));
         btn2.setOnClickListener(v -> txtCal.append("2"));
         btn3.setOnClickListener(v -> txtCal.append("3"));
@@ -51,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(v -> txtCal.append("9"));
         btn0.setOnClickListener(v -> txtCal.append("0"));
 
+        // Clear the screen
         btnClear.setOnClickListener(v -> txtCal.setText(""));
 
-        // Operators
+        // Operator buttons functionality
         btnAdd.setOnClickListener(v -> {
             String input = txtCal.getText().toString();
             if (!input.isEmpty()) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Calculate result
+        // Calculate the result
         btnCal.setOnClickListener(v -> {
             String input = txtCal.getText().toString();
             if (!input.isEmpty()) {
