@@ -1,4 +1,4 @@
-image: gradle:7.4.2-jdk11  # ✅ Stable Gradle + Java image (no Docker setup required)
+image: gradle:7.6.1-jdk17
 
 pipelines:
   default:
@@ -7,7 +7,7 @@ pipelines:
         caches:
           - gradle
         script:
-          - echo "✅ Building Android App..."
+          - echo "✅ Building Android App with Java 17..."
           - chmod +x ./gradlew
           - ./gradlew clean assembleDebug
         artifacts:
