@@ -1,4 +1,4 @@
-image: circleci/android:api-34-jdk17  # Public Android image on Docker Hub
+image: android:latest  # Official Android Docker image
 
 pipelines:
   default:
