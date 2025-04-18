@@ -1,0 +1,13 @@
+image: android:latest  # Use the official Android Docker image for the build process
+
+pipelines:
+  default:
+    - step:
+        name: Build APK
+        caches:
+          - gradle  # Cache Gradle dependencies to speed up future builds
+        script:
+          - echo "Starting build"  # Simple log to show build has started
+          - ./gradlew clean build  # Clean the project and build the APK
+        artifacts:
+          - app/build/outputs/**/*.apk  # Save the APK as an artifact
