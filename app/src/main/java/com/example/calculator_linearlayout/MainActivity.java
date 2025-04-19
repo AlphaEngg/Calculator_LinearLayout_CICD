@@ -10,9 +10,7 @@ import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 
 
-public class MainActivity extends AppCompatActivity {
-
-            TextView txtCal;
+public class MainActivity extends AppCompatActivity { TextView txtCal;
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAdd, btnSub, btnMul, btnDiv, btnClear, btnCal;
     double value1, value2;
     boolean isAdd, isSub, isMul, isDiv;
@@ -88,14 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnDiv.setOnClickListener(v -> {
-            String input = txtCal.getText().toString();
-            if (!input.isEmpty()) {
-                value1 = Double.parseDouble(input);
-                isDiv = true;
-                txtCal.setText("");
-            }
-        });
+
 
         // Calculate the result
         btnCal.setOnClickListener(v -> {
