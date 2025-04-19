@@ -12,7 +12,7 @@ import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txtCal;
+            TextView txtCal;
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAdd, btnSub, btnMul, btnDiv, btnClear, btnCal;
     double value1, value2;
     boolean isAdd, isSub, isMul, isDiv;
